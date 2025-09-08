@@ -96,6 +96,118 @@ nav a:hover {
   background: gold;
 }
 
+.btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* rule tablets */
+.tablet-btn-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.img-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin: 2rem 0.5rem;
+  transition: transform 0.2s;
+}
+
+.img-btn img {
+  width: 550px;
+  height: 350px;
+  object-fit: contain;
+  display: block;
+}
+
+.btn-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  font-size: 4.1rem;
+  text-align: center;
+    color: #6a4e32; /* warm brown/orange */
+    text-shadow:
+        1px 1px 2px #fff7e6,         /* highlight edge, warm white */
+        -2px -2px 2px #7a5c2e,       /* inner shadow top-left, deep brown */
+        2px 2px 6px #4b2e05,         /* deep shadow bottom-right, dark brown */
+        0 0 8px #e2c785;             /* stone glow, pale gold */
+  letter-spacing: 0.1em;   
+  pointer-events: none;  
+}
+
+.img-btn {
+  position: relative;
+}
+
+.img-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* golden rules */
+.tablet-commandments {
+  position: relative;
+  width: 400px; /* Adjust as needed */
+  margin: 2rem auto;
+}
+
+.tablet-img {
+    width: 600px;
+    display: block;
+    align-self: center;
+    justify-self: center;
+}
+
+.tablet-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0.7rem 4rem 0.7rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #4b2e05;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    text-align: center;
+    pointer-events: none;
+}
+
+.tablet-rule {
+  margin: 1.2rem 0;
+  text-align: center;
+}
+
+.tablet-rule-num {
+  font-size: 2rem;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  color: #4e4e4ead;
+  margin-bottom: 0.3rem;
+}
+
+.tablet-rule-text {
+  font-size: 1.1rem;
+  color: #2c2c2c;
+  font-weight: 500;
+  font-family: 'Cinzel', serif;
+}
+
 /* Footer */
 footer {
   text-align: center;
