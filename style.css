@@ -1,9 +1,13 @@
+/* =====================
+   Layout & Structure
+   ===================== */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
+  font-family: 'Cinzel', serif;
 }
 
 main {
@@ -13,11 +17,59 @@ main {
     url('images/papyrus_texture.jpg') center center/cover no-repeat;
 }
 
-body {
-  font-family: 'Cinzel', serif;
-  margin: 0;
+.homepage-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.2fr 1fr;
+  grid-template-areas:
+    "contact center rules";
+  gap: 2rem;
+  align-items: start;
+  padding: 2rem 1rem;
+  justify-items: center;
+  margin: 0 auto;
 }
 
+.grid-side {
+  grid-area: contact;
+}
+.tablet-rules-bg.grid-side {
+  grid-area: rules;
+}
+.grid-center {
+  grid-area: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: stretch;
+}
+.grid-main {
+  width: 100%;
+  min-width: 0;
+}
+.tablet-rules-bg.grid-side {
+  justify-self: end;
+  margin-right: 0; 
+}
+
+@media (max-width: 900px) {
+.homepage-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr; 
+  grid-template-areas:
+    "contact center rules";
+  gap: 2rem;
+  align-items: start;
+  padding: 2rem 1rem;
+}
+  .grid-center, .grid-side {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* =====================
+   Header & Navigation
+   ===================== */
 header {
   background: #7b1113;
   color: #fff;
@@ -38,6 +90,7 @@ header h1 {
   margin: 0 auto;
   font-size: 2.2rem;
   text-align: center;
+  font-family: 'Cinzel', serif;
 }
 
 nav {
@@ -49,65 +102,270 @@ nav a {
   text-decoration: none;
   margin: 0 1rem;
   font-weight: bold;
+  font-family: 'Cinzel', serif;
 }
 
 nav a:hover {
   text-decoration: underline;
 }
 
+/* =====================
+   Section Containers
+   ===================== */
 .section-container {
   background: #fdf6e3;
   border: 6px solid #c4a000;
   border-radius: 25px;
   padding: 2rem;
-  margin: 2rem auto;
+  margin: 2rem auto; /* ensure centering horizontally */
   max-width: 800px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center children vertically */
 }
 
 .section-container h2 {
   text-align: center;
   margin-top: 0;
+  font-family: 'Cinzel', serif;
 }
 
 .section-container p {
   text-align: center;
+  font-family: 'Cinzel', serif;
 }
 
+.section-container.report-box {
+  padding-left: 0;
+  padding-right: 0;
+}
+.section-container.grid-main {
+  margin-bottom: 0.7rem; 
+}
+.grid-center > .section-container.grid-main {
+  margin-bottom: 0.7rem;
+}
+.grid-center > .section-container.grid-main:last-child {
+  margin-top: 0.2rem; 
+}
 
-/* Buttons */
+/* =====================
+   Buttons
+   ===================== */
 .btn {
-    display: inline-block;
-    background: #c4a000;
-    color: #000;
-    padding: 0.8rem 1.5rem;
-    border-radius: 10px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: transform 0.2s;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    text-align: center;
+  display: inline-block;
+  background: #c4a000;
+  color: #000;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s;
+  margin: 0.5rem auto;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
-.btn:hover {
+.btn:hover, .report-btn:hover {
   transform: scale(1.05);
   background: gold;
 }
 
-.btn-row {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+.report-btn {
+  background: #b22222;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+}
+.large-report-btn {
+  width: 100%;         /* fills the container */
+  max-width: 100%;
+  font-size: 1.5rem;
+  padding: 1rem 0;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(178,34,34,0.18);
+  background: #b22222;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+.large-report-btn:hover {
+  background: #d32f2f;
+  transform: scale(1.09);
 }
 
-/* rule tablets */
-.tablet-btn-row {
+/* =====================
+   Tablet Commandments (Golden Rules)
+   ===================== */
+.tablet-rules-bg {
+  position: relative;
+  background: url('images/golden_tablet.png') center center/contain no-repeat;
+  max-width: 340px;
+  min-height: 420px;
+  margin: 1rem auto;
+  padding: 2.1rem 2rem 2rem 2rem; 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* move content to top */
+  font-family: 'Cinzel', serif;
+}
+.tablet-title {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #4b3900;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 2px #c4a000,
+    0 0 1px #c4a000,
+    1px 1px 0 #c4a000,
+    -1px -1px 0 #c4a000,
+    1px -1px 0 #c4a000,
+    -1px 1px 0 #c4a000;
+}
+.tablet-rules-text {
+  width: 92%;
+  font-family: 'Cinzel', serif;
+}
+.tablet-rule {
+  margin: 0rem 0.1rem;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+}
+.tablet-rule-num {
+  font-size: 1.3em;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  color: #4b3900;
+  margin-bottom: 0rem;
+  text-shadow:
+    0 0 2px #c4a000,   /* gold glow */
+    0 0 1px #c4a000,   /* thin gold outline */
+    1px 1px 0 #c4a000,
+    -1px -1px 0 #c4a000,
+    1px -1px 0 #c4a000,
+    -1px 1px 0 #c4a000;
+}
+.tablet-rule-text {
+  margin: 0rem 0.6rem;
+  font-size: 0.9em;
+  /* color: #4b2e05; */
+  color: #000000;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+}
+
+/* =====================
+   Contact Scroll Section
+   ===================== */
+.scroll-contact-bg {
+  position: relative;
+  background: url('images/ContactScroll.png') center center/contain no-repeat;
+  max-width: 340px;
+  min-height: 420px;
+  margin: 1rem auto;
+  padding: 4.7rem 2.5rem 3rem 3rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.scroll-contact-title {
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.7em;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #493908;
+  letter-spacing: 2px;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  white-space: normal;
+}
+
+.scroll-contact-text {
+  width: 80%;
+  font-family: 'Dancing Script', cursive; /* handwritten font */
+  font-size: 1.1em;
+  color: #4b2e05;
+  text-align: center;
+}
+
+.scroll-contact-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 0rem 0 0 0;
+}
+
+.scroll-contact-text li {
+  margin-bottom: 0.2rem;
+}
+
+.scroll-contact-text a {
+  color: #7b1113;
+  text-decoration: underline;
+  font-family: inherit;
+}
+
+/* =====================
+   Footer & Sponsors
+   ===================== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #7b1113;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+}
+
+footer .sponsors img {
+  height: 40px;
+  margin: 0 10px;
+}
+
+.homepage-flex {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .homepage-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* =====================
+   Rules page buttons
+   ===================== */
+
+.rules-btn-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 100%; /* or 100% for full width */
+  margin: 0 auto;
 }
 
 .img-btn {
@@ -118,11 +376,12 @@ nav a:hover {
   text-decoration: none;
   margin: 2rem 0.5rem;
   transition: transform 0.2s;
+  position: relative;
 }
 
 .img-btn img {
-  width: 550px;
-  height: 350px;
+  width: 440px;
+  height: 320px;
   object-fit: contain;
   display: block;
 }
@@ -134,20 +393,18 @@ nav a:hover {
   transform: translate(-50%, -50%);
   font-family: 'Cinzel', serif;
   font-weight: bold;
-  font-size: 4.1rem;
+  font-size: 3.5rem;
   text-align: center;
-    color: #6a4e32; /* warm brown/orange */
-    text-shadow:
-        1px 1px 2px #fff7e6,         /* highlight edge, warm white */
-        -2px -2px 2px #7a5c2e,       /* inner shadow top-left, deep brown */
-        2px 2px 6px #4b2e05,         /* deep shadow bottom-right, dark brown */
-        0 0 8px #e2c785;             /* stone glow, pale gold */
-  letter-spacing: 0.1em;   
-  pointer-events: none;  
-}
-
-.img-btn {
-  position: relative;
+  color: #6a4e32;
+  text-shadow:
+    1px 1px 2px #fff7e6,
+    -2px -2px 2px #7a5c2e,
+    2px 2px 6px #4b2e05,
+    0 0 8px #e2c785;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  width: 90%;
+  line-height: 1.1;
 }
 
 .img-btn:hover {
@@ -155,68 +412,114 @@ nav a:hover {
   filter: brightness(1.1);
 }
 
-/* golden rules */
-.tablet-commandments {
+/* =====================
+   Pocket Rules
+   ===================== */
+
+.long-scroll-bg {
   position: relative;
-  width: 400px; /* Adjust as needed */
-  margin: 2rem auto;
+  background: url('images/LongScroll.png') center top/cover no-repeat;
+  width: 80vw;
+  min-height: 1200px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding: 12rem 12vw 12rem 10vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.tablet-img {
-    width: 600px;
-    display: block;
-    align-self: center;
-    justify-self: center;
-}
-
-.tablet-text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 1rem 0.7rem 4rem 0.7rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #4b2e05;
-    font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
-    text-align: center;
-    pointer-events: none;
-}
-
-.tablet-rule {
-  margin: 1.2rem 0;
+.scroll-title {
   text-align: center;
-}
-
-.tablet-rule-num {
-  font-size: 2rem;
-  font-family: 'Cinzel', serif;
+  font-family: 'Indie Flower', cursive;
+  font-size: 4em;
   font-weight: bold;
-  color: #4e4e4ead;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0;
+  color: #493908;
+  letter-spacing: 2px;
+}
+/* =====================
+   Wax Tablet FAQ Section
+   ===================== */
+.wax-tablet-faq {
+  position: relative;
+  background: url('images/WaxTablet.png') center center/contain no-repeat;
+  max-width: 1400px;
+  min-height: 700px;
+  margin: 2rem auto;
+  padding: 7rem 2.5rem 3rem 2.5rem; /* reduced horizontal padding */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center content horizontally */
+  justify-content: flex-start;
+}
+.faq-tablet-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1.5rem;
+  width: 90%;
+  align-items: start;
+  margin: 0 auto;
+}
+.faq-questions, .faq-answers {
+  display: grid;
+  grid-template-rows: repeat(5, auto); /* ensures each question/answer pair aligns by row */
+  gap: 2.2rem;
+}
+.faq-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-family: 'Rock Salt', cursive;
+  font-size: 1.1em;
+  color: #4b3900;
+  font-weight: bold;
+  text-align: left;
+  padding-right: 1rem;
+}
+.faq-answers {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: 'Rock Salt', cursive;
+  font-size: 0.73em;
+  color: #2d1c00;
+  text-align: left;
+  padding-left: 9rem;
+  padding-right: 0rem;
+  padding-top: 0;
+  padding-bottom: 0.5;
+}
+.faq-q {
+  margin-bottom: 0.2rem;
+}
+.faq-a {
+  margin-bottom: 0.2rem;
 }
 
-.tablet-rule-text {
-  font-size: 1.1rem;
-  color: #2c2c2c;
-  font-weight: 500;
-  font-family: 'Cinzel', serif;
+@media (max-width: 900px) {
+  .wax-tablet-faq {
+    padding: 2rem 0.5rem 2rem 0.5rem;
+    min-height: 400px;
+  }
+  .faq-tablet-content {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .faq-questions, .faq-answers {
+    padding: 0;
+    font-size: 1em;
+  }
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #7b1113;
-  color: #fff;
-}
-
-footer .sponsors img {
-  height: 40px;
-  margin: 0 10px;
+.scroll-handwritten-text {
+  width: 100%;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.7em;
+  color: #4b2e05;
+  text-align: left;
+  line-height: 1.6;
 }
