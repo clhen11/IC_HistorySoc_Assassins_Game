@@ -19,36 +19,42 @@ main {
 
 .homepage-layout {
   display: grid;
-  grid-template-columns: 0.9fr 1.2fr 1fr;
+  grid-template-columns: 1fr 1.5fr 1.fr;
   grid-template-areas:
-    "contact center rules";
-  gap: 2rem;
+    "rules center contact";
+  gap: 4rem;
   align-items: start;
-  padding: 2rem 1rem;
+  padding: 1rem 0rem 1rem 2rem;
   justify-items: center;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .grid-side {
-  grid-area: contact;
+  /* grid-area: contact; */
+  right: -7vw; /* move further right, adjust as needed */
+  left: 0vw;
+  top: 0;
 }
-.tablet-rules-bg.grid-side {
-  grid-area: rules;
-}
+
 .grid-center {
   grid-area: center;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  align-items: stretch;
+  align-items: flex-end; /* move center content further left */
+  margin-left: -3vw; /* nudge center content left, adjust as needed */
 }
 .grid-main {
   width: 100%;
   min-width: 0;
 }
-.tablet-rules-bg.grid-side {
+/* .tablet-rules-bg.grid-side {
   justify-self: end;
-  margin-right: 0; 
+  margin-right: -2; 
+} */
+ .scroll-contact-bg.grid-side {
+  justify-self: end;
+  top: 1.8rem; 
 }
 
 @media (max-width: 900px) {
@@ -61,10 +67,10 @@ main {
   align-items: start;
   padding: 2rem 1rem;
 }
-  .grid-center, .grid-side {
+  /* .grid-center, .grid-side {
     width: 100%;
     margin: 0 auto;
-  }
+  } */
 }
 
 /* =====================
@@ -124,7 +130,7 @@ nav a:hover {
   font-family: 'Cinzel', serif;
   display: flex;
   flex-direction: column;
-  align-items: center; /* center children vertically */
+  align-items: center; /* center vertically */
 }
 
 .section-container h2 {
@@ -209,7 +215,7 @@ nav a:hover {
   position: relative;
   background: url('images/golden_tablet.png') center center/contain no-repeat;
   max-width: 340px;
-  min-height: 420px;
+  min-height: 510px;
   margin: 1rem auto;
   padding: 2.1rem 2rem 2rem 2rem; 
   box-sizing: border-box;
@@ -260,7 +266,7 @@ nav a:hover {
 }
 .tablet-rule-text {
   margin: 0rem 0.6rem;
-  font-size: 0.9em;
+  font-size: 1em;
   /* color: #4b2e05; */
   color: #000000;
   font-family: 'Cinzel', serif;
@@ -273,10 +279,10 @@ nav a:hover {
 .scroll-contact-bg {
   position: relative;
   background: url('images/ContactScroll.png') center center/contain no-repeat;
-  max-width: 340px;
-  min-height: 420px;
+  max-width: 430px;
+  min-height: 430px;
   margin: 1rem auto;
-  padding: 4.7rem 2.5rem 3rem 3rem;
+  padding: 3.7rem 2.5rem 3rem 3rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -301,7 +307,7 @@ nav a:hover {
 .scroll-contact-text {
   width: 80%;
   font-family: 'Dancing Script', cursive; /* handwritten font */
-  font-size: 1.1em;
+  font-size: 1.3em;
   color: #4b2e05;
   text-align: center;
 }
@@ -333,9 +339,24 @@ footer {
   font-family: 'Cinzel', serif;
 }
 
+footer .sponsors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 footer .sponsors img {
   height: 40px;
   margin: 0 10px;
+}
+
+.sponsor-label {
+  font-size: 1em;
+  color: #fff;
+  margin-left: 10px;
+  font-family: 'Cinzel', serif;
+  opacity: 0.8;
 }
 
 .homepage-flex {
@@ -440,80 +461,6 @@ footer .sponsors img {
   color: #493908;
   letter-spacing: 2px;
 }
-/* =====================
-   Wax Tablet FAQ Section
-   ===================== */
-.wax-tablet-faq {
-  position: relative;
-  background: url('images/WaxTablet.png') center center/contain no-repeat;
-  max-width: 1400px;
-  min-height: 700px;
-  margin: 2rem auto;
-  padding: 7rem 2.5rem 3rem 2.5rem; /* reduced horizontal padding */
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* center content horizontally */
-  justify-content: flex-start;
-}
-.faq-tablet-content {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 1.5rem;
-  width: 90%;
-  align-items: start;
-  margin: 0 auto;
-}
-.faq-questions, .faq-answers {
-  display: grid;
-  grid-template-rows: repeat(5, auto); /* ensures each question/answer pair aligns by row */
-  gap: 2.2rem;
-}
-.faq-questions {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  font-family: 'Rock Salt', cursive;
-  font-size: 1.1em;
-  color: #4b3900;
-  font-weight: bold;
-  text-align: left;
-  padding-right: 1rem;
-}
-.faq-answers {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  font-family: 'Rock Salt', cursive;
-  font-size: 0.73em;
-  color: #2d1c00;
-  text-align: left;
-  padding-left: 9rem;
-  padding-right: 0rem;
-  padding-top: 0;
-  padding-bottom: 0.5;
-}
-.faq-q {
-  margin-bottom: 0.2rem;
-}
-.faq-a {
-  margin-bottom: 0.2rem;
-}
-
-@media (max-width: 900px) {
-  .wax-tablet-faq {
-    padding: 2rem 0.5rem 2rem 0.5rem;
-    min-height: 400px;
-  }
-  .faq-tablet-content {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-  .faq-questions, .faq-answers {
-    padding: 0;
-    font-size: 1em;
-  }
-}
 
 .scroll-handwritten-text {
   width: 100%;
@@ -522,4 +469,101 @@ footer .sponsors img {
   color: #4b2e05;
   text-align: left;
   line-height: 1.6;
+}
+
+.rules-list li {
+  margin-bottom: 0.8em; /* reduce gap between bullet points */
+}
+
+/* =====================
+   Wax Tablet FAQ Section
+   ===================== */
+.wax-tablet-faq {
+  position: relative;
+  background: url('images/WaxTablet.png') center center/contain no-repeat;
+  max-width: 1400px;
+  min-height: 690px;
+  margin: 0 auto; /* remove extra vertical margin */
+  padding: 0.5rem 2.5rem 0.5rem 2.5rem; /* reduce top/bottom padding */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.faq-tablet-title-row {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1.2rem;
+  margin-top: 3.5rem; /* move title down */
+  margin-left: 6.5rem; /* move title to the right */
+}
+.faq-tablet-title {
+  font-family: 'Rock Salt', cursive;
+  font-size: 3.2em;
+  font-weight: bold;
+  color: #4b3900;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 2px #c4a000,
+    0 0 1px #c4a000,
+    1px 1px 0 #c4a000,
+    -1px -1px 0 #c4a000,
+    1px -1px 0 #c4a000,
+    -1px 1px 0 #c4a000;
+  margin-left: 0;
+}
+.faq-tablet-pages {
+  display: flex;
+  width: 100%;
+  gap: 3rem;
+  justify-content: space-between;
+  margin-top: -3.5rem; /* move both columns of text upwards */
+}
+.faq-tablet-page.left {
+  width: 85%;
+  align-items: flex-end;
+  margin-left: 3.5rem; /* move left text to the right */
+  margin-top: 3rem;
+}
+.faq-tablet-page.right {
+  align-items: flex-end;
+  margin-top: -4rem;
+  margin-left: 6rem;
+}
+.faq-block {
+  border-radius: 0px;
+  padding: 0.2rem 1.5rem;
+  margin-bottom: 0.2rem;
+  max-width: 80%;
+}
+.faq-q {
+  font-family: 'Rock Salt', cursive;
+  font-size: 1.1em;
+  color: #4b3900;
+  font-weight: bold;
+  margin-bottom: 0rem;
+}
+.faq-a {
+  font-family: 'Rock Salt', cursive;
+  font-size: 0.9em;
+  color: #2d1c00;
+  margin-bottom: 0.1rem;
+}
+@media (max-width: 900px) {
+  .wax-tablet-faq {
+    padding: 2rem 0.5rem 2rem 0.5rem;
+    min-height: 400px;
+  }
+  .faq-tablet-title {
+    font-size: 2em;
+  }
+  .faq-tablet-pages {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .faq-tablet-page.left, .faq-tablet-page.right {
+    align-items: flex-start;
+  }
 }
