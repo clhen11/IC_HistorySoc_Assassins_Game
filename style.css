@@ -567,3 +567,51 @@ footer .sponsors img {
     align-items: flex-start;
   }
 }
+
+/* =====================
+   Prizes pages
+   ===================== */
+.prize-card {
+  background: #fdf6e3;
+  border: 2px solid #bfa76f;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: 'Cinzel', serif;
+}
+
+.prize-card h3 a {
+  color: #7b3f00;
+  text-decoration: none;
+}
+
+.prize-card h3 a:hover {
+  text-decoration: underline;
+}
+
+.note {
+  font-size: 0.9em;
+  font-style: italic;
+  color: #555;
+}
+
+.bio-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+.bio-photo {
+  max-width: 250px;
+  border: 3px solid #bfa76f; /* Roman-gold accent */
+  border-radius: 12px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+.bio-text {
+  flex: 1;
+  font-family: 'Cinzel', serif;
+  line-height: 1.6;
+}
