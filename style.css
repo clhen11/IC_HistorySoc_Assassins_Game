@@ -19,7 +19,7 @@ main {
 
 .homepage-layout {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr; /* fix: 1.fr -> 1fr */
+  grid-template-columns: 1fr 1.5fr 1fr; /* fix typo 1.fr -> 1fr */
   grid-template-areas:
     "rules center contact";
   gap: 4rem;
@@ -496,7 +496,7 @@ footer .sponsors img {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 1.2rem;
-  margin-top: 3.5rem; /* move title down */
+  margin-top: 2.5rem; /* was 3.5rem: move title slightly upwards */
   margin-left: 6.5rem; /* move title to the right */
 }
 .faq-tablet-title {
@@ -556,6 +556,10 @@ footer .sponsors img {
     padding: 2rem 0.5rem 2rem 0.5rem;
     min-height: 400px;
   }
+  /* Nudge FAQ title up a bit on small tablets */
+  .faq-tablet-title-row {
+    margin-top: 1rem;
+  }
   .faq-tablet-title {
     font-size: 2em;
   }
@@ -563,9 +567,14 @@ footer .sponsors img {
     flex-direction: column;
     gap: 1.2rem;
   }
-  .faq-tablet-page.left, .faq-tablet-page.right {
-    align-items: flex-start;
+  .faq-tablet-page.left,
+  .faq-tablet-page.right {
+    align-items: stretch;   /* left-align text */
+    margin: 0;              /* remove desktop offsets */
+    width: 100%;
   }
+  .faq-tablet-page.left { margin-bottom: 1rem; } /* add space between the two blocks */
+  .faq-block { max-width: 100%; }
 }
 
 /* =====================
@@ -617,138 +626,56 @@ footer .sponsors img {
 }
 
 /* =====================
-   Mobile (phones <= 768px)
+   Mobile (<= 768px) layout changes
    ===================== */
 @media (max-width: 768px) {
-  /* Header & nav */
-  #logo {
-    position: static;
-    width: 64px;
-    margin: 0 auto 0.5rem auto;
-    display: block;
-  }
-  header h1 {
-    font-size: 1.4rem;
-    line-height: 1.2;
-    margin: 0.4rem 0;
-  }
-  nav {
-    margin-top: 0.25rem;
-  }
-  nav a {
-    display: inline-block;
-    margin: 0.2rem 0.4rem;
-    font-size: 0.9rem;
-  }
-
-  /* Homepage layout: stack and center */
-  .homepage-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    padding: 0.5rem;
-    margin: 0 auto;
-  }
-  .grid-center {
-    align-items: stretch;
-    margin-left: 0;
-    gap: 1rem;
-    width: 100%;
-  }
-  .grid-side {
-    position: static;
-    right: auto;
-    left: auto;
-    top: auto;
-    margin: 0 auto;
-  }
-  .tablet-rules-bg {
-    max-width: 90vw;
-    min-height: auto;
-    padding: 1.2rem;
-  }
-  .scroll-contact-bg {
-    max-width: 90vw;
-    min-height: auto;
-    padding: 3rem 1rem 1.5rem 1rem;
-  }
-  .section-container {
-    max-width: 92vw;
-    padding: 1rem;
-    margin: 0.8rem auto;
-  }
-  .large-report-btn {
-    font-size: 1.2rem;
-    padding: 0.8rem 0;
-  }
-  .img-btn img {
-    width: 92vw;
-    height: auto;
-  }
-  .btn-label {
-    font-size: 2rem;
-  }
-
-  /* Pocket Rules */
-  .long-scroll-bg {
-    width: 95vw;
-    padding: 3rem 6vw;
-    min-height: auto;
-  }
-  .scroll-title {
-    font-size: 2.2em;
-    margin-bottom: 0.6rem;
-  }
-  .scroll-handwritten-text {
-    font-size: 1.15em;
-    line-height: 1.4;
-  }
-  .rules-list li {
-    margin-bottom: 0.6em;
-  }
-
-  /* FAQ Tablet */
+  /* FAQ: hide background wax tablet image */
   .wax-tablet-faq {
-    max-width: 95vw;
+    background-image: none !important;
+    background: transparent !important;
     padding: 1rem;
-    min-height: auto;
+    max-width: 95vw;
+  }
+  /* Hide top-left logo on mobile */
+  #logo { display: none !important; }
+
+  /* Reflow homepage so center content first, tablet & scroll side-by-side at bottom */
+  .homepage-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "center center"
+      "rules contact";
+    gap: 1rem;
+    padding: 0.5rem;
+    justify-items: center;
+  }
+  .grid-center { grid-area: center; margin-left: 0; align-items: stretch; width: 100%; }
+  .tablet-rules-bg.grid-side { grid-area: rules; position: static; }
+  .scroll-contact-bg.grid-side { grid-area: contact; position: static; }
+  .grid-side { right: auto; left: auto; top: auto; }
+
+  /* Enlarge the tablet & scroll images while fitting two columns */
+  .tablet-rules-bg,
+  .scroll-contact-bg {
+    width: 48vw;           /* roughly half screen each */
+    max-width: 48vw;
+    min-height: 62vw;      /* keep image visually larger */
     background-size: contain;
-  }
-  .faq-tablet-title-row {
-    margin: 0.5rem 0 1rem 0;
-    justify-content: center;
-  }
-  .faq-tablet-title {
-    font-size: 2rem;
-    text-align: center;
-  }
-  .faq-tablet-pages {
-    flex-direction: column;
-    gap: 0.8rem;
-    margin-top: 0;
-  }
-  .faq-tablet-page.left,
-  .faq-tablet-page.right {
-    align-items: stretch;
-    margin: 0;
-    width: 100%;
-  }
-  .faq-block {
-    max-width: 100%;
-    padding: 0.6rem 0.8rem;
+    margin: 0.2rem 0;
   }
 
-  /* Footer */
-  footer .sponsors {
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  footer .sponsors img {
-    height: 28px;
-    margin: 0 6px;
-  }
-  .sponsor-label {
-    font-size: 0.9rem;
+  /* Reduce the row width (text width) inside each */
+  .tablet-rules-text { width: 90%; }
+  .scroll-contact-text { width: 85%; }
+
+  /* Slightly smaller fonts to fit two columns */
+  .tablet-title { font-size: 1.2em; }
+  .tablet-rule-num { font-size: 1.05em; }
+  .tablet-rule-text { font-size: 0.9em; line-height: 1.3; }
+  .scroll-contact-title { font-size: 1.3em; }
+  .scroll-contact-text { font-size: 1.05em; line-height: 1.35; }
+  .faq-tablet-title-row {
+    margin: 0.1rem 0 4rem 0; /* move FAQ title up a bit on small screens */
   }
 }
