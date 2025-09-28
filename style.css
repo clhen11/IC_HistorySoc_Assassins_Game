@@ -8,6 +8,7 @@ html, body {
   display: flex;
   flex-direction: column;
   font-family: 'Cinzel', serif;
+  overflow-x: hidden; /* prevent horizontal overflow on small screens */
 }
 
 main {
@@ -15,6 +16,22 @@ main {
   background:
     linear-gradient(rgba(255, 255, 255, 0.456), rgba(255, 255, 255, 0.456)),
     url('images/papyrus_texture.jpg') center center/cover no-repeat;
+}
+
+header {
+  background: #7b1113;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}
+
+#logo {
+  position: absolute;
+  top: 1.6rem;
+  left: 3rem;
+  width: 100px;
+  height: auto;
 }
 
 .homepage-layout {
@@ -58,38 +75,14 @@ main {
 }
 
 @media (max-width: 900px) {
-.homepage-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr; 
-  grid-template-areas:
-    "contact center rules";
-  gap: 2rem;
-  align-items: start;
-  padding: 2rem 1rem;
-}
-  /* .grid-center, .grid-side {
-    width: 100%;
-    margin: 0 auto;
-  } */
-}
-
-/* =====================
-   Header & Navigation
-   ===================== */
-header {
-  background: #7b1113;
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-  position: relative;
-}
-
-#logo {
-  position: absolute;
-  top: 1.6rem;
-  left: 3rem;
-  width: 100px;
-  height: auto;
+  .homepage-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    grid-template-areas: "contact center rules";
+    gap: 2rem;
+    align-items: start;
+    padding: 2rem 1rem;
+  }
 }
 
 header h1 {
@@ -639,43 +632,72 @@ footer .sponsors img {
   /* Hide top-left logo on mobile */
   #logo { display: none !important; }
 
-  /* Reflow homepage so center content first, tablet & scroll side-by-side at bottom */
+  /* Reflow homepage: stack sections full-width to avoid overflow */
   .homepage-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-areas:
-      "center center"
-      "rules contact";
-    gap: 1rem;
-    padding: 0.5rem;
-    justify-items: center;
+      "center"
+      "rules"
+      "contact";
+    gap: 0.8rem;
+    padding: 0; /* no side padding to prevent overflow */
+    justify-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  /* Narrow only the center sections on the homepage (not the tablet/scroll) */
+  .homepage-layout .section-container.grid-main {
+    width: 88vw;
+    max-width: 520px;
+    box-sizing: border-box;
+    padding: 1rem 1.2rem;
+    margin-left: auto;
+    margin-right: auto;
   }
   .grid-center { grid-area: center; margin-left: 0; align-items: stretch; width: 100%; }
   .tablet-rules-bg.grid-side { grid-area: rules; position: static; }
   .scroll-contact-bg.grid-side { grid-area: contact; position: static; }
-  .grid-side { right: auto; left: auto; top: auto; }
+  .grid-side { right: auto; left: auto; top: auto; justify-self: stretch; width: 100%; }
 
-  /* Enlarge the tablet & scroll images while fitting two columns */
+  /* Make the tablet & scroll full-width, stacked */
   .tablet-rules-bg,
   .scroll-contact-bg {
-    width: 48vw;           /* roughly half screen each */
-    max-width: 48vw;
-    min-height: 62vw;      /* keep image visually larger */
+    width: 100%;
+    max-width: 100%;
+    min-height: unset;      /* let content decide height */
     background-size: contain;
-    margin: 0.2rem 0;
+    margin: 1rem 0;
+    box-sizing: border-box;
   }
+  /* Different paddings for each on mobile */
+  .tablet-rules-bg { padding: 4rem; }
+  .scroll-contact-bg { padding: 6rem; }
 
-  /* Reduce the row width (text width) inside each */
-  .tablet-rules-text { width: 90%; }
-  .scroll-contact-text { width: 85%; }
+  /* Reduce inner text width slightly so it doesn’t touch edges */
+  .tablet-rules-text { width: 70%; }
+  .scroll-contact-text { width: 70%; }
 
-  /* Slightly smaller fonts to fit two columns */
-  .tablet-title { font-size: 1.2em; }
-  .tablet-rule-num { font-size: 1.05em; }
+  /* Slightly smaller fonts for mobile */
+  .tablet-title { font-size: 1.1em; }
+  .tablet-rule-num { font-size: 1em; }
   .tablet-rule-text { font-size: 0.9em; line-height: 1.3; }
-  .scroll-contact-title { font-size: 1.3em; }
-  .scroll-contact-text { font-size: 1.05em; line-height: 1.35; }
-  .faq-tablet-title-row {
-    margin: 0.1rem 0 4rem 0; /* move FAQ title up a bit on small screens */
+  .scroll-contact-title { font-size: 1.2em; }
+  .scroll-contact-text { font-size: 1em; line-height: 1.35; }
+  /* FAQ: move title upwards and add more space below it on phones */
+  .faq-tablet-title-row { margin: 0.1rem 0 1.6rem 0; }
+  /* Ensure FAQ text starts below the title (no negative pull-up) */
+  .faq-tablet-pages { margin-top: 0; }
+  
+  /* Pocket rules page: remove background and tighten typography */
+  .long-scroll-bg {
+    background: none !important;
+    width: 94vw;
+    min-height: unset;
+    padding: 1rem;
+    margin: 0 auto;
+    transform: none;
   }
+  .scroll-title { font-size: 2rem; }
+  .scroll-handwritten-text { font-size: 1.2rem; }
 }
