@@ -283,7 +283,7 @@ nav a:hover {
   justify-content: flex-start;
 }
 
-.scroll-contact-title {
+/* .scroll-contact-title {
   text-align: center;
   font-family: 'Dancing Script', cursive;
   font-size: 1.7em;
@@ -299,10 +299,34 @@ nav a:hover {
 
 .scroll-contact-text {
   width: 80%;
-  font-family: 'Dancing Script', cursive; /* handwritten font */
+  font-family: 'Dancing Script', cursive; 
   font-size: 1.3em;
   color: #4b2e05;
   text-align: center;
+} */
+
+.scroll-contact-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 0rem;
+}
+
+.scroll-contact-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  color: #4b2e05;
+  max-width: 78%;
+  margin: 0 auto;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.scroll-contact-bg {
+  padding: 5rem 4rem 2rem 4rem;
 }
 
 .scroll-contact-text ul {
@@ -312,7 +336,7 @@ nav a:hover {
 }
 
 .scroll-contact-text li {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0rem;
 }
 
 .scroll-contact-text a {
@@ -466,6 +490,43 @@ footer .sponsors img {
 
 .rules-list li {
   margin-bottom: 0.8em; /* reduce gap between bullet points */
+}
+
+/* Pocket Rules list formatting */
+.rules-list {
+  padding-left: 1.25rem;  /* indent numbers */
+  margin: 0.25rem 0 0.5rem 0;
+}
+.rules-list > li {
+  margin: 0.5rem 0;       /* readable spacing between items */
+  line-height: 1.5;
+}
+.rules-list > li > ul,
+.rules-list > li > ol {
+  margin-top: 0.35rem;    /* small gap before sub-points */
+  padding-left: 1.2rem;   /* indent sublists */
+}
+
+.rules-note {
+  margin-top: 1rem;
+  margin-left: 5rem; /* indent the concluding note */
+}
+.rules-recommended {
+  margin: 0.4rem 0 0 0;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+/* make links look nice */
+.rules-link {
+  color: #b22222; /* or any color you like */
+  font-weight: bold;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.rules-link:hover,
+.rules-link:focus {
+  color: #7b1113;
 }
 
 /* =====================
@@ -622,6 +683,8 @@ footer .sponsors img {
    Mobile (<= 768px) layout changes
    ===================== */
 @media (max-width: 768px) {
+  /* Slightly reduce note indent on mobile for space */
+  .rules-note { margin-left: 0.6rem; }
   /* FAQ: hide background wax tablet image */
   .wax-tablet-faq {
     background-image: none !important;
