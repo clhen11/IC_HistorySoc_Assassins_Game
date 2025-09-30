@@ -679,6 +679,27 @@ footer .sponsors img {
   line-height: 1.6;
 }
 
+/* Marie Curie page: wrap text around the photo */
+.section-container.marie-curie .bio-text {
+  text-align: left;
+}
+.section-container.marie-curie .bio-text .bio-photo {
+  float: right;
+  width: 260px;
+  max-width: 40%;
+  margin: 0 0 1rem 1rem; /* space between image and text */
+}
+
+@media (max-width: 768px) {
+  .section-container.marie-curie .bio-text .bio-photo {
+    float: none;
+    display: block;
+    margin: 0 auto 1rem auto;
+    max-width: 70%;
+    width: auto;
+  }
+}
+
 /* =====================
    Mobile (<= 768px) layout changes
    ===================== */
@@ -735,7 +756,7 @@ footer .sponsors img {
   }
   /* Different paddings for each on mobile */
   .tablet-rules-bg { padding: 3rem 2rem 4rem 2rem; }
-  .scroll-contact-bg { padding: 8rem 3rem 6rem 3rem; }
+  .scroll-contact-bg { padding: 6rem 3rem 6rem 3rem; }
 
   /* Reduce inner text width slightly so it doesn’t touch edges */
   .tablet-rules-text { width: 70%; }
