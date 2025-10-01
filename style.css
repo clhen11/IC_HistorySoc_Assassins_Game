@@ -457,11 +457,11 @@ footer .sponsors img {
 .long-scroll-bg {
   position: relative;
   background: url('images/LongScroll.png') center top/cover no-repeat;
-  width: 80vw;
-  min-height: 1200px;
+  width: 100vw;
+  min-height: 1600px;
   margin-left: 50%;
   transform: translateX(-50%);
-  padding: 12rem 12vw 12rem 10vw;
+  padding: 14rem 20vw 15rem 13vw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -501,11 +501,26 @@ footer .sponsors img {
   margin: 0.5rem 0;       /* readable spacing between items */
   line-height: 1.5;
 }
+.rules-list > li.no-number {
+  list-style: none;          /* hide the decimal marker */
+  counter-increment: list-item 0; /* do not advance the counter */
+}
+
+.rules-list > li.spacer {
+  list-style: none;
+  counter-increment: list-item 0; 
+  padding: 0;
+  margin: 1rem 0; 
+  border: 0;
+}
 .rules-list > li > ul,
 .rules-list > li > ol {
-  margin-top: 0.35rem;    /* small gap before sub-points */
-  padding-left: 1.2rem;   /* indent sublists */
+  margin-top: 0.35rem;    
+  padding-left: 1.2rem;   
 }
+
+li.spacer { list-style: none !important; }
+li.spacer::marker { content: ""; }
 
 .rules-note {
   margin-top: 1rem;
