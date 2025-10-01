@@ -458,10 +458,10 @@ footer .sponsors img {
   position: relative;
   background: url('images/LongScroll.png') center top/cover no-repeat;
   width: 100vw;
-  min-height: 1600px;
+  min-height: 1700px;
   margin-left: 50%;
   transform: translateX(-50%);
-  padding: 14rem 20vw 15rem 13vw;
+  padding: 13rem 20vw 15rem 13vw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -477,6 +477,16 @@ footer .sponsors img {
   margin-bottom: 0;
   color: #493908;
   letter-spacing: 2px;
+}
+
+.scroll-subtitle {
+  text-align: left;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #493908;
+  letter-spacing: 0.7px;
 }
 
 .scroll-handwritten-text {
@@ -510,7 +520,7 @@ footer .sponsors img {
   list-style: none;
   counter-increment: list-item 0; 
   padding: 0;
-  margin: 1rem 0; 
+  margin: 0.8rem 0; 
   border: 0;
 }
 .rules-list > li > ul,
