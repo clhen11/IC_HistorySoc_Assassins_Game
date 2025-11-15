@@ -737,6 +737,17 @@ li.spacer::marker { content: ""; }
 }
 
 /* =====================
+   Winners page
+   ===================== */
+
+  .winner-photo {
+    width: 50vw;         
+    max-width: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+/* =====================
    Mobile (<= 768px) layout changes
    ===================== */
 @media (max-width: 768px) {
